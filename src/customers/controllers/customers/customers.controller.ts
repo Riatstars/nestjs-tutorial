@@ -7,7 +7,7 @@ import { CustomersService } from 'src/customers/services/customers/customers.ser
 export class CustomersController {
     constructor (private customersService: CustomersService){}
 
-    @Get()
+    @Get('')
     getAllCustomers(){
         return this.customersService.getAllCustomers()
     }
@@ -24,7 +24,7 @@ export class CustomersController {
        res.send(customer) 
     }
 
-    @Get("search/:id")
+    @Get("/search/:id")
     searchCustomerById(@Param('id',ParseIntPipe) id: number){
         const customer = this.customersService.findCustomerById(id)
         if(!customer){
