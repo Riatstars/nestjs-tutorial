@@ -13,8 +13,8 @@ import { LocalAuthGuard } from '../../utils/LocalGuard';
 
 @Controller('auth')
 export class AuthController {
-  @UseGuards(LocalAuthGuard)
   @Post('login')
+  @UseGuards(LocalAuthGuard)
   async login(@Req() req) {}
 
   @Get('')

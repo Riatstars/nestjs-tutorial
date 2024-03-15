@@ -8,6 +8,7 @@ import {
   ParseIntPipe,
   Post,
   UseFilters,
+  UseGuards,
   UseInterceptors,
   UsePipes,
   ValidationPipe,
@@ -16,6 +17,7 @@ import { HttpExceptionFilter } from '../../filters/HttpException.filter';
 import { UserNotFoundException } from '../../exceptions/UserNotFound.exception';
 import { CreateUserDto } from '../../dto/CreateUser.dto';
 import { UsersService } from '../../services/users/users.service';
+import { LocalAuthGuard } from '../../../auth/utils/LocalGuard';
 
 @Controller('users')
 export class UsersController {
@@ -25,6 +27,7 @@ export class UsersController {
   ) {}
 
   @Get('')
+  @UseGuards(LocalAuthGuard)
   getUsers() {
     return this.usersService.getUsers();
   }
